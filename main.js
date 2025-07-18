@@ -3,21 +3,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (btn) {
         btn.addEventListener("click", function (e) {
-            e.preventDefault(); // Evita que se abra el link inmediatamente
+            e.preventDefault(); // Previene que abra WhatsApp inmediatamente
 
-            fetch("https://script.google.com/macros/s/AKfycbwUmLvXde7DdLeevRGpFxYWKRT89c1ZxtnUheY0GhEdpAAm5Z37Dgs4gESOT9K5wh5UaA/exec")
-                .then(response => {
-                    if (!response.ok) throw new Error("Error al registrar clic");
-                    return response.text();
-                })
-                .then(data => {
-                    console.log("Clic registrado:", data);
-                    window.open(this.href, "_blank"); // Abrir WhatsApp luego de registrar
-                })
-                .catch(err => {
-                    console.error("Error:", err);
-                    window.open(this.href, "_blank"); // Igual lo abre si falla
-                });
+            // Captura del navegador y resolución de pantalla
+            const userAgent = encodeURIComponent(navigator.userAgent);
+            const screenSize = `${screen.width}x${screen.height}`;
+
+            // URL completa de tu Web App con parámetros
+            const url = `https://script.google.com/macros/s/AKfycbwUmLvXde7DdLeevRGpFxYWKRT89c1ZxtnUheY0GhEdpAAm5Z37Dgs4gESOT9K5wh5UaA/exec?ua=${userAgent}&screen=${screenSize}`;
+
+            // Envío del clic (sin esperar respuesta por CORS)
+            fetch(url, {
+                method: "GET",
+                mode: "no-cors"
+            });
+
+            // Pequeño delay antes de abrir WhatsApp para asegurar el registro
+            setTimeout(() => {
+                window.open(this.href, "_blank");
+            }, 200);
         });
     }
 });
