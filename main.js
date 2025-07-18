@@ -10,7 +10,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const url = `https://script.google.com/macros/s/AKfycbwUmLvXde7DdLeevRGpFxYWKRT89c1ZxtnUheY0GhEdpAAm5Z37Dgs4gESOT9K5wh5UaA/exec?ua=${userAgent}&screen=${screenSize}`;
 
-            fetch(url); // sin no-cors
+            fetch(url, {
+            method: "GET",
+            mode: "cors"
+            });
 
             setTimeout(() => {
                 window.open(this.href, "_blank");
