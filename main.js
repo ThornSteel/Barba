@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
         btn.addEventListener("click", function (e) {
             e.preventDefault(); // Evita que se abra el link inmediatamente
 
-            fetch("https://script.google.com/macros/s/TU_CORRECTA_URL/exec")
+            fetch("https://script.google.com/macros/s/AKfycbwUmLvXde7DdLeevRGpFxYWKRT89c1ZxtnUheY0GhEdpAAm5Z37Dgs4gESOT9K5wh5UaA/exec")
                 .then(response => {
                     if (!response.ok) throw new Error("Error al registrar clic");
                     return response.text();
