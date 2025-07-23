@@ -6,8 +6,7 @@
 }
 
 body {
-    background: #3F5EFB;
-    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+    background: #ffffff;
     max-height: 100vw;
     max-height: 100vh;
 }
@@ -54,14 +53,27 @@ main {
     justify-content: center;
     margin-top: 50px;
     padding: 30px;
-    border-radius: 8px;
-    border: 1px solid white;
+    background-color: black;
 }
 
+#contendorConfianza h2 {
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: green;
+}
 #contendorPrincipal h1 {
     text-align: center;
     color: rgb(235, 235, 235);
     font-size: 2.5rem;
+}
+
+#contendorPrincipal h2 {
+    text-align: center;
+    color: rgb(235, 235, 235);
+    font-size: 2rem;
 }
 
 #contenedorBtn {
@@ -73,14 +85,12 @@ main {
     padding: 20px 40px;
     border-radius: 30px;
     text-align: center;
-    animation: movimiento 2s ease-in-out infinite;
-    transition: 0.5s ease;
     background: linear-gradient(45deg, #00cc66, #00ff99);
     color: white;
     box-shadow: 0 0 10px #00cc66, 0 0 15px #00ff99;
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 2rem;
 }
 
 #contenedorBtn a:hover {
@@ -108,13 +118,23 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
 }
 
 #contenedorWsp img {
-    width: 10%;
-    min-width: 100px;
+    width: 15%;
+    min-width: 2px;
+    background-color: rgb(0, 255, 255);
+ 
 }
+.recorte-vertical {
+  clip-path: inset(90px 10px 90px 10px); /* recorta 40px de arriba y abajo */
+
+}
+
+.trustpilot-box {
+    margin-bottom: 40px;
+}
+
 
 #oferta {
     display: flex;
@@ -130,9 +150,9 @@ main {
 }
 
 #retiros {
-    color: white;
     font-weight: 700;
     font-size: 22px;
+
 }
 
 #verificada {
@@ -152,4 +172,11 @@ main {
     #contendorPrincipal {
         border: none;
     }
+}
+@media (max-width: 480px) {
+  .verificado::before,
+  .verificado::after {
+    font-size: 1em;
+    margin: 0 5px;
+  }
 }
