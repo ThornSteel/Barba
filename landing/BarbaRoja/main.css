@@ -1,0 +1,182 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    background: #ffffff;
+    max-height: 100vw;
+    max-height: 100vh;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+#contenedorUnoNav {
+    position: absolute;
+}
+
+#contenedorUnoNav img {
+    width: 15%;
+    min-width: 80px;
+}
+
+#contenedorDosNav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#contenedorDosNav img {
+    width: 10%;
+    min-width: 150px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#contendorPrincipal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    padding: 30px;
+    background-color: black;
+}
+
+#contendorConfianza h2 {
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: green;
+}
+#contendorPrincipal h1 {
+    text-align: center;
+    color: rgb(235, 235, 235);
+    font-size: 2.5rem;
+}
+
+#contendorPrincipal h2 {
+    text-align: center;
+    color: rgb(235, 235, 235);
+    font-size: 2rem;
+}
+
+#contenedorBtn {
+    margin-top: 50px;
+}
+
+#contenedorBtn a {
+    display: inline-block;
+    padding: 20px 40px;
+    border-radius: 30px;
+    text-align: center;
+    background: linear-gradient(45deg, #00cc66, #00ff99);
+    color: white;
+    box-shadow: 0 0 10px #00cc66, 0 0 15px #00ff99;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+#contenedorBtn a:hover {
+    background-color: #00ff99;
+    color: black;
+}
+
+/* Animación con ida y vuelta */
+@keyframes movimiento {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+#contenedorWsp {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#contenedorWsp img {
+    width: 15%;
+    min-width: 2px;
+    background-color: rgb(0, 255, 255);
+ 
+}
+.recorte-vertical {
+  clip-path: inset(90px 10px 90px 10px); /* recorta 40px de arriba y abajo */
+
+}
+
+.trustpilot-box {
+    margin-bottom: 40px;
+}
+
+
+#oferta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+#oferta p {
+    text-align: center;
+}
+
+#retiros {
+    font-weight: 700;
+    font-size: 22px;
+
+}
+
+#verificada {
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+@media (min-width: 250px) and (max-width: 780px) {
+
+    #contendorPrincipal h1 {
+        font-size: 1.5rem;
+    }
+}
+@media (min-width: 250px) and (max-width: 450px) {
+
+    #contendorPrincipal {
+        border: none;
+    }
+}
+@media (max-width: 480px) {
+  .verificado::before,
+  .verificado::after {
+    font-size: 1em;
+    margin: 0 5px;
+  }
+}

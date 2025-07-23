@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Siempre Online</title>
+      <style>
+  .verificado {
+    font-weight: bold;
+    font-size: clamp(1.5em, 5vw, 3em); /* Tamaño de texto flexible */
+    color: black;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .verificado::before,
+  .verificado::after {
+    content: '✅';
+    font-size: 0.9em; /* Relativo al texto, se adapta */
+    margin: 0 0.4em;
+  }
+
+  /* Opcional: más control en pantallas muy pequeñas */
+  @media (max-width: 400px) {
+    .verificado {
+      font-size: clamp(1.2em, 6vw, 2em);
+    }
+
+    .verificado::before,
+    .verificado::after {
+      font-size: 0.8em;
+      margin: 0 0.3em;
+    }
+  }
+</style>
+   <style>
+    .trustpilot-box {
+      border: 2px dashed #ccc;
+      padding: 10px 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: 10px;
+      font-family: sans-serif;
+      font-size: 14px;
+      background-color: #f9f9f9;
+    }
+
+    .stars {
+      background-color: #00b67a;
+      color: white;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .trustpilot-logo {
+      color: #00b67a;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .trustpilot-logo .star {
+      font-size: 16px;
+    }
+  </style>
+  <style>
+    .footer-promo {
+      background-color: #00b341;
+      color: white;
+      text-align: center;
+      padding: 15px 20px;
+      font-family: sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 999;
+    }
+
+    .footer-promo span {
+      display: block;
+    }
+
+    .footer-promo .highlight {
+      color: #fff;
+    }
+
+    @media (min-width: 600px) {
+      .footer-promo {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+    <nav>
+        <div id="contenedorUnoNav">
+            <img id="horas" src="assets/atencion_24_horas.png" alt="cartel_atencion_24_horas">
+        </div>
+        <div id="contenedorDosNav">
+            <img id="logo" src="assets/joker-dice-fav.webp" alt="logo_de_pirata">
+        </div>
+    </nav>
+
+    <main>
+       <h1 class="verificado">
+    Plataforma verificada
+        </h1>
+         <div id="contendorConfianza">
+            <h2 id="colorCasino">Casino de Confianza</h2>
+        </div>
+        <div id="contendorPrincipal">
+            <h2>Te estamos conectando con nuestro equipo via whatapp</h2>
+        </div>
+
+        <div id="contenedorBtn">
+            <a id="btnJugar" href="https://wa.me/5491155170883?text=Quiero%20que%20me%20des%20informacion" target="_blank">Ir a Whatapp Ahora</a>
+        </div>
+
+        <div id="contenedorWsp">
+            <img src="assets/raw.png" alt="imagen_wsp" class="recorte-vertical" style="border-radius: 15px;">
+        </div>
+
+        <div class="trustpilot-box">
+  <span>"Excelente"</span>
+  <span class="stars">★★★★★</span>
+  <span>Calificación 4.9/5 en</span>
+  <span class="trustpilot-logo">
+    <span class="star">★</span> Trustpilot
+  </span>
+</div>
+
+        
+
+<div id="oferta" style="margin: 0%;">
+            <p id="retiros">© 2025 463. Todos los derechos reservados.</p>
+            
+        </div>
+    </main>
+
+    <footer style="margin:0; padding-bottom: 70px;">
+       <div class="footer-promo">
+    🎁 <span><span class="highlight">ACTIVO LAS 24HS</span>
+  </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
