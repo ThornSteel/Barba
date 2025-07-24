@@ -2,41 +2,155 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
-    <title>Siempre Online</title>
-      <style>
-  .verificado {
-    font-weight: bold;
-    font-size: clamp(1.5em, 5vw, 3em); /* Tamaño de texto flexible */
-    color: black;
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <title>Siempre Online</title>
+  <style>
+    * {
+      font-family: 'Roboto', sans-serif !important;
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      text-decoration: none;
+    }
 
-  .verificado::before,
-  .verificado::after {
-    content: '✅';
-    font-size: 0.9em; /* Relativo al texto, se adapta */
-    margin: 0 0.4em;
-  }
+    body {
+      background: #ffffff;
+    }
 
-  /* Opcional: más control en pantallas muy pequeñas */
-  @media (max-width: 400px) {
+    nav {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+    }
+
+    #contenedorUnoNav {
+      position: absolute;
+    }
+
+    #contenedorUnoNav img {
+      width: 15%;
+      min-width: 80px;
+    }
+
+    #contenedorDosNav {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #contenedorDosNav img {
+      width: 10%;
+      min-width: 150px;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
     .verificado {
-      font-size: clamp(1.2em, 6vw, 2em);
+      font-weight: bold;
+      font-size: clamp(1.5em, 5vw, 3em);
+      color: black;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
     }
 
     .verificado::before,
     .verificado::after {
-      font-size: 0.8em;
-      margin: 0 0.3em;
+      content: '✅';
+      font-size: 0.9em;
+      margin: 0 0.4em;
     }
-  }
-</style>
-   <style>
+
+    @media (max-width: 500px) {
+      .verificado {
+        font-size: clamp(1.2em, 6vw, 2em);
+      }
+
+      .verificado::before,
+      .verificado::after {
+        font-size: 0.8em;
+        margin: 0 0.3em;
+      }
+    }
+
+    #contendorConfianza h2 {
+      text-align: center;
+      color: green;
+      font-size: clamp(1.2rem, 4vw, 2rem);
+      margin: 20px 0;
+    }
+
+    #contendorPrincipal {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 50px;
+      padding: 30px;
+      background-color: black;
+      width: 100%;
+    }
+
+    #contendorPrincipal h2 {
+      text-align: center;
+      color: #ebebeb;
+      font-size: clamp(1.2rem, 4vw, 2rem);
+    }
+
+    #contenedorBtn {
+      margin: 50px 0 20px;
+    }
+
+    #btnJugar {
+      display: inline-block;
+      padding: 20px 40px;
+      border-radius: 30px;
+      text-align: center;
+      background-color: #0eff06c0;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 2rem;
+      border: 3px solid black;
+    }
+
+    #btnJugar:hover {
+      background-color: #0de605e7;
+      color: black;
+    }
+
+    #contenedorWsp {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    #contenedorWsp h3 {
+      text-align: center;
+      font-size: clamp(1rem, 3vw, 1.5rem);
+    }
+
+    .recorte-vertical {
+      clip-path: inset(90px 10px 90px 10px);
+      width: 100%;
+      height: auto;
+    }
+
     .trustpilot-box {
       border: 2px dashed #ccc;
       padding: 10px 20px;
@@ -45,8 +159,11 @@
       gap: 10px;
       border-radius: 10px;
       font-family: sans-serif;
-      font-size: 14px;
+      font-size: clamp(0.8rem, 2vw, 1rem);
       background-color: #f9f9f9;
+      margin-bottom: 160px;
+      flex-wrap: wrap;
+      text-align: center;
     }
 
     .stars {
@@ -54,7 +171,6 @@
       color: white;
       padding: 2px 5px;
       border-radius: 3px;
-      font-size: 13px;
       font-weight: bold;
     }
 
@@ -69,8 +185,22 @@
     .trustpilot-logo .star {
       font-size: 16px;
     }
-  </style>
-  <style>
+
+    #oferta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 50px;
+    }
+
+    #retiros {
+      font-weight: 700;
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      text-align: center;
+    }
+
     .footer-promo {
       background-color: #00b341;
       color: white;
@@ -104,58 +234,55 @@
 </head>
 
 <body>
-    <nav>
-        <div id="contenedorUnoNav">
-            <img id="horas" src="assets/atencion_24_horas.png" alt="cartel_atencion_24_horas">
-        </div>
-        <div id="contenedorDosNav">
-            <img id="logo" src="assets/joker-dice-fav.webp" alt="logo_de_pirata">
-        </div>
-    </nav>
+  <nav>
+    <div id="contenedorUnoNav">
+      <img id="horas" src="assets/atencion_24_horas.png" alt="cartel_atencion_24_horas">
+    </div>
+    <div id="contenedorDosNav">
+      <img id="logo" src="assets/joker-dice-fav.webp" alt="logo_de_pirata">
+    </div>
+  </nav>
 
-    <main>
-       <h1 class="verificado">
-    Plataforma verificada
-        </h1>
-         <div id="contendorConfianza">
-            <h2 id="colorCasino">Casino de Confianza</h2>
-        </div>
-        <div id="contendorPrincipal">
-            <h2>Te estamos conectando con nuestro equipo via whatapp</h2>
-        </div>
+  <main>
+    <h1 class="verificado">Plataforma verificada</h1>
 
-        <div id="contenedorBtn">
-            <a id="btnJugar" href="https://wa.me/5491155170883?text=Quiero%20que%20me%20des%20informacion" target="_blank">Ir a Whatapp Ahora</a>
-        </div>
+    <div id="contendorConfianza">
+      <h2 id="colorCasino">Casino de Confianza</h2>
+    </div>
 
-        <div id="contenedorWsp">
-            <img src="assets/raw.png" alt="imagen_wsp" class="recorte-vertical" style="border-radius: 15px;">
-        </div>
+    <div id="contendorPrincipal">
+      <h2>Te estamos conectando con nuestro equipo via whatsapp</h2>
+    </div>
 
-        <div class="trustpilot-box">
-  <span>"Excelente"</span>
-  <span class="stars">★★★★★</span>
-  <span>Calificación 4.9/5 en</span>
-  <span class="trustpilot-logo">
-    <span class="star">★</span> Trustpilot
-  </span>
-</div>
+    <div id="contenedorBtn">
+      <a id="btnJugar" href="https://wa.me/5491155170883?text=Quiero%20que%20me%20des%20informacion" target="_blank">Ir a Whatapp Ahora</a>
+    </div>
 
-        
+    <div id="contenedorWsp">
+      <h3>CREACION DE USUARIO TOTALMENTE GRATUITO!</h3>
+    </div>
 
-<div id="oferta" style="margin: 0%;">
-            <p id="retiros">© 2025 463. Todos los derechos reservados.</p>
-            
-        </div>
-    </main>
+    <div class="trustpilot-box">
+      <span>"Excelente"</span>
+      <span class="stars">★★★★★</span>
+      <span>Calificación 4.9/5 en</span>
+      <span class="trustpilot-logo">
+        <span class="star">★</span> Trustpilot
+      </span>
+    </div>
 
-    <footer style="margin:0; padding-bottom: 70px;">
-       <div class="footer-promo">
-    🎁 <span><span class="highlight">ACTIVO LAS 24HS</span>
-  </div>
-    </footer>
+    <div id="oferta">
+      <p id="retiros">© 2025 463. Todos los derechos reservados.</p>
+    </div>
+  </main>
 
-    <script src="main.js"></script>
+  <footer style="margin:0; padding-bottom: 70px;">
+    <div class="footer-promo">
+      🎁 <span><span class="highlight">ACTIVO LAS 24HS</span></span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
 </body>
 
 </html>
