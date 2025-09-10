@@ -1,249 +1,151 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="main.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <meta name="facebook-domain-verification" content="undcc9ixag9tzqrkjtd2blvwr4r7us" />
-  <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '637667969062380');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=637667969062380&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-  <title>Siempre Online</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Redirección a WhatsApp</title>
+  <meta name="robots" content="noindex,nofollow" />
   <style>
-    * {
-      font-family: 'Roboto', sans-serif !important;
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-      text-decoration: none;
-      
-    }
-
+    :root { --bg:#0f172a; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; }
+    * { box-sizing: border-box; }
     body {
-      background: url("tu-imagen.jpg") no-repeat center center fixed;
-      background-size: cover;
-      overflow-x: hidden;
-      height: 100dvh;
-      display: flex;
-      flex-direction: column;
+      margin: 0; min-height: 100svh; display: grid; place-items: center;
+      background: radial-gradient(1200px 800px at 20% -10%, #1f2937 0%, #0b1120 40%, var(--bg) 100%);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      color: var(--text);
     }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px;
-      flex-wrap: wrap;
+    .card {
+      width: min(520px, 92vw); padding: 24px 22px; border-radius: 16px;
+      background: linear-gradient(180deg, #0b1220 0%, #0e1627 100%);
+      border: 1px solid rgba(255,255,255,.06); box-shadow: 0 10px 30px rgba(0,0,0,.35);
     }
-
-    #contenedorUnoNav img,
-    #contenedorDosNav img {
-      max-width: 80px;
-      height: auto;
+    h1 { font-size: 22px; margin: 0 0 8px; letter-spacing:.2px; }
+    p { margin: 8px 0; color: var(--muted); line-height: 1.4; }
+    .row { display:flex; align-items:center; gap:10px; margin-top:10px; flex-wrap: wrap; }
+    .btn {
+      appearance: none; border: 0; border-radius: 12px; padding: 12px 16px;
+      background: #22c55e; color: #051b0b; font-weight: 700; cursor: pointer;
+      transition: transform .06s ease, filter .2s ease; text-decoration: none;
+      display:inline-flex; align-items:center; gap:8px;
     }
-
-    #contenedorUnoNav,
-    #contenedorDosNav {
-      flex: 1;
-      display: flex;
-      justify-content: center;
+    .btn:hover { filter: brightness(1.05); transform: translateY(-1px); }
+    .ghost {
+      background: transparent; color: var(--text); border: 1px dashed rgba(255,255,255,.2);
     }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      background: rgba(255,255,255,.06); padding:.2em .45em; border-radius:8px; color:#e2e8f0;
+    }
+    .status { display:flex; align-items:center; gap:10px; margin-top: 14px; }
+    .dot {
+      width: 10px; height: 10px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 16px #22c55e66;
+      animation: pulse 1.2s infinite ease-in-out;
+    }
+    @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.35)} }
+    .small { font-size: 12px; opacity:.8 }
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-live="polite">
+    <h1>Redirigiendo a WhatsApp…</h1>
+    <p>Estamos abriendo tu conversación. Si no se abre sola en unos segundos, tocá el botón.</p>
 
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: row;
-        justify-content: center;
-        gap: 10px;
+    <div class="status"><span class="dot" aria-hidden="true"></span><span id="status-text">Preparando enlace…</span></div>
+
+    <div class="row">
+      <a id="open-now" class="btn" href="#" rel="noopener">Abrir ahora</a>
+      <button id="copy-link" class="btn ghost" type="button">Copiar enlace</button>
+    </div>
+
+    <noscript>
+      <p><strong>JavaScript está deshabilitado.</strong> Abrí manualmente este enlace:</p>
+      <p><a href="https://wa.me/5989XXXXXXXX?text=Hola%20%F0%9F%91%8B%20vengo%20desde%20la%20web." class="btn">Abrir WhatsApp</a></p>
+    </noscript>
+  </main>
+
+  <script>
+    // ========= CONFIGURACIÓN =========
+    // Cambiá por tu número (sin '+' ni espacios). Ejemplo UY: 5989XXXXXXXX
+    const PHONE_NUMBER   = '5492617011463';
+    // Cambiá el mensaje preestablecido:
+    const PRESET_MESSAGE = 'Hola 👋 vengo desde la web. Me gustaría pedir información.';
+
+    // (Opcional) permitir override por querystring:
+    // ?phone=5989YYYYYYYY&msg=Hola%20desde%20el%20link
+    const params = new URLSearchParams(location.search);
+    const phoneOverride = params.get('phone');
+    const msgOverride   = params.get('msg');
+
+    const phone  = (phoneOverride || PHONE_NUMBER).replace(/[^\d]/g, '');
+    const text   = encodeURIComponent(msgOverride || PRESET_MESSAGE);
+
+    // Detección simple de plataforma
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    const isAndroid = /android/i.test(ua);
+    const isIOS     = /iphone|ipad|ipod/i.test(ua);
+    const isMobile  = isAndroid || isIOS;
+
+    // Rutas de destino
+    const urlWeb    = `https://wa.me/${phone}?text=${text}`;
+    const urlApp    = `whatsapp://send?phone=${phone}&text=${text}`;
+
+    // Elementos UI
+    const statusText = document.getElementById('status-text');
+    const openNow    = document.getElementById('open-now');
+    const copyBtn    = document.getElementById('copy-link');
+
+    // Setear href del botón "Abrir ahora" (si es móvil intenta app, si no, web)
+    const primaryHref = isMobile ? urlApp : urlWeb;
+    openNow.href = primaryHref;
+
+    // Copiar enlace al portapapeles
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(urlWeb);
+        copyBtn.textContent = '¡Enlace copiado!';
+        setTimeout(() => (copyBtn.textContent = 'Copiar enlace'), 1800);
+      } catch {
+        window.prompt('Copiá el enlace con Ctrl+C / Cmd+C y aceptá:', urlWeb);
+      }
+    });
+
+    // Redirección automática con fallback
+    // 1) Si es móvil, intentamos abrir la app. Si falla, vamos a wa.me.
+    // 2) En escritorio, vamos directo a wa.me.
+    function tryOpen() {
+      statusText.textContent = 'Abriendo conversación…';
+      if (isMobile) {
+        // Intento app inmediata
+        window.location.href = urlApp;
+
+        // Fallback silencioso a Web después de ~1.2s (si la app no capturó la intent)
+        setTimeout(() => {
+          // Si el usuario todavía está en esta pestaña, mandamos a wa.me
+          if (!document.hidden) {
+            statusText.textContent = 'No se pudo abrir la app, intentando WhatsApp Web…';
+            window.location.href = urlWeb;
+          }
+        }, 1200);
+      } else {
+        window.location.href = urlWeb;
       }
     }
 
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-evenly;
-      padding: 10px;
-      text-align: center;
-    }
+    // Arranque automático con un breve delay para que cargue la UI
+    setTimeout(tryOpen, 650);
 
-    .verificado {
-      font-weight: bold;
-      font-size: clamp(1.2em, 5vw, 2em);
-      color: black;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .verificado::before,
-    .verificado::after {
-      content: '✅';
-      font-size: 0.9em;
-    }
-
-    #colorCasino {
-      color: green;
-      font-size: clamp(1.2rem, 4vw, 2rem);
-    }
-
-    #contendorPrincipal {
-      background-color: rgb(40, 90, 196);
-      padding: 20px;
-      border-radius: 12px;
-      max-width: 400px;
-      width: 90%;
-    }
-
-    #contendorPrincipal h2 {
-      color: white;
-      font-size: clamp(1rem, 4vw, 1.5rem);
-    }
-
-    #contenedorBtn {
-      margin: 10px 0;
-    }
-
-    #btnJugar {
-      padding: 15px 20px;
-      border-radius: 15px;
-      background-color: #0eff06c0;
-      color: white;
-      font-weight: bold;
-      font-size: clamp(1rem, 4vw, 1.5rem);
-      border: 2px solid black;
-      width: 90%;
-      max-width: 200px;
-    }
-
-    .trustpilot-box {
-      border: 2px dashed #ccc;
-      padding: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 5px;
-      border-radius: 10px;
-      background-color: #f9f9f9;
-      font-size: clamp(0.8rem, 2vw, 1rem);
-      width: 90%;
-      max-width: 320px;
-    }
-
-    .stars {
-      background-color: #00b67a;
-      color: white;
-      padding: 2px 5px;
-      border-radius: 3px;
-      font-weight: bold;
-    }
-
-    .trustpilot-logo {
-      color: #00b67a;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .trustpilot-logo .star {
-      font-size: 16px;
-    }
-
-    #contenedorWsp h3 {
-      font-size: clamp(1rem, 3vw, 1.3rem);
-      padding: 0 10px;
-    }
-
-    #retiros {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      font-weight: bold;
-    }
-
-    .footer-promo {
-      background-color: #00b341;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      font-weight: bold;
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      width: 100%;
-      position: fixed;
-      bottom: 0;
-      z-index: 1000;
-    }
-  </style>
-</head>
-
-<body>
-  <nav>
-    <div id="contenedorUnoNav">
-      <img id="horas" src="assets/atencion_24_horas.png" alt="cartel_atencion_24_horas">
-    </div>
-    <div id="contenedorDosNav">
-      <img id="logo" src="assets/joker-dice-fav.webp" alt="logo_de_pirata">
-    </div>
-  </nav>
-
-  <main>
-    <h1 class="verificado">Plataforma verificada</h1>
-    <h2 id="colorCasino">Casino de Confianza</h2>
-
-    <div id="contendorPrincipal">
-      <h2>Con tu primera carga tenes un 30% de bono</h2>
-    </div>
-
-    <div id="contenedorBtn">
-      <a id="btnJugar" href="https://wa.me/5491166543069?text=Quiero%20mi%20bono%20de%2030%" target="_blank">Ir a Whatsapp Ahora</a>
-    </div>
-
-    <div id="contenedorWsp">
-      <h3>CREACION DE USUARIO TOTALMENTE GRATUITO!</h3>
-    </div>
-
-    <div class="trustpilot-box">
-      <span>"Excelente"</span>
-      <span class="stars">★★★★★</span>
-      <span>Calificación 4.9/5 en</span>
-      <span class="trustpilot-logo">
-        <span class="star">★</span> Trustpilot
-      </span>
-    </div>
-
-    <div id="oferta">
-      <p id="retiros">© 2025 463. Todos los derechos reservados.</p>
-    </div>
-  </main>
-
-  <footer>
-    <div class="footer-promo">
-      🎁 <span class="highlight">ACTIVO LAS 24HS</span>
-    </div>
-  </footer>
-
-  <script src="main.js"></script>
+    // Por si el usuario hace clic manualmente:
+    openNow.addEventListener('click', (e) => {
+      // Si es móvil y el href ya es whatsapp://, dejamos por defecto.
+      if (!isMobile) {
+        // En desktop reforzamos ir a wa.me
+        e.preventDefault();
+        window.location.href = urlWeb;
+      }
+    });
+  </script>
 </body>
-
 </html>
+
 
 
