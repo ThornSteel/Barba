@@ -505,7 +505,6 @@ h2,
 .product-card,
 .review-card,
 .panel-form,
-.checkout-panel,
 .newsletter-band,
 .cart-panel {
   min-width: 0;
@@ -732,19 +731,13 @@ h2,
   margin: 6px 0;
 }
 
-.panel-form,
-.checkout-panel {
+.panel-form {
   padding: 24px;
 }
 
 .panel-form {
   display: grid;
   gap: 16px;
-}
-
-.checkout-panel .panel-form {
-  padding: 0;
-  border: 0;
 }
 
 .checkout-grid {
@@ -900,6 +893,35 @@ h2,
 .cart-items {
   display: grid;
   gap: 14px;
+}
+
+.cart-view {
+  display: none;
+}
+
+.cart-view.active {
+  display: grid;
+  gap: 18px;
+}
+
+.cart-view-checkout {
+  padding-bottom: 24px;
+}
+
+.cart-view-checkout .section-heading {
+  margin-bottom: 0;
+}
+
+.cart-view-checkout .checkout-grid {
+  grid-template-columns: 1fr;
+}
+
+.cart-back-button {
+  width: 100%;
+}
+
+.contact-form-wrap {
+  max-width: 760px;
 }
 
 .empty-cart {
@@ -1252,8 +1274,7 @@ h2,
   }
 
   .newsletter-grid,
-  .panel-form,
-  .checkout-panel {
+  .panel-form {
     padding: 20px;
   }
 
@@ -1361,7 +1382,7 @@ h2,
               <p class="price">$25.000</p>
               <div class="product-actions">
                 <button class="btn btn-primary" type="button" data-add-cart="1">Agregá al carrito</button>
-                <a class="detail-link" href="#checkout" data-detail="1">Ver detalle</a>
+                <a class="detail-link" href="#" data-detail="1">Ver detalle</a>
               </div>
             </div>
           </article>
@@ -1376,7 +1397,7 @@ h2,
               <p class="price">$50.000</p>
               <div class="product-actions">
                 <button class="btn btn-primary" type="button" data-add-cart="2">Agregá al carrito</button>
-                <a class="detail-link" href="#checkout" data-detail="2">Ver detalle</a>
+                <a class="detail-link" href="#" data-detail="2">Ver detalle</a>
               </div>
             </div>
           </article>
@@ -1391,7 +1412,7 @@ h2,
               <p class="price">$80.000</p>
               <div class="product-actions">
                 <button class="btn btn-primary" type="button" data-add-cart="3">Agregá al carrito</button>
-                <a class="detail-link" href="#checkout" data-detail="3">Ver detalle</a>
+                <a class="detail-link" href="#" data-detail="3">Ver detalle</a>
               </div>
             </div>
           </article>        </div>
@@ -1492,7 +1513,7 @@ h2,
               <p class="price">$25.000</p>
               <div class="product-actions">
                 <button class="btn btn-primary" type="button" data-add-cart="1">Agregá al carrito</button>
-                <a class="detail-link" href="#checkout" data-detail="1">Ver detalle</a>
+                <a class="detail-link" href="#" data-detail="1">Ver detalle</a>
               </div>
             </div>
           </article>
@@ -1507,7 +1528,7 @@ h2,
               <p class="price">$50.000</p>
               <div class="product-actions">
                 <button class="btn btn-primary" type="button" data-add-cart="2">Agregá al carrito</button>
-                <a class="detail-link" href="#checkout" data-detail="2">Ver detalle</a>
+                <a class="detail-link" href="#" data-detail="2">Ver detalle</a>
               </div>
             </div>
           </article>
@@ -1522,7 +1543,7 @@ h2,
               <p class="price">$80.000</p>
               <div class="product-actions">
                 <button class="btn btn-primary" type="button" data-add-cart="3">Agregá al carrito</button>
-                <a class="detail-link" href="#checkout" data-detail="3">Ver detalle</a>
+                <a class="detail-link" href="#" data-detail="3">Ver detalle</a>
               </div>
             </div>
           </article>
@@ -1537,7 +1558,7 @@ h2,
               <p class="price">$65.000</p>
               <div class="product-actions">
                 <button class="btn btn-primary" type="button" data-add-cart="4">Agregá al carrito</button>
-                <a class="detail-link" href="#checkout" data-detail="4">Ver detalle</a>
+                <a class="detail-link" href="#" data-detail="4">Ver detalle</a>
               </div>
             </div>
           </article>
@@ -1552,7 +1573,7 @@ h2,
               <p class="price">$45.000</p>
               <div class="product-actions">
                 <button class="btn btn-primary" type="button" data-add-cart="5">Agregá al carrito</button>
-                <a class="detail-link" href="#checkout" data-detail="5">Ver detalle</a>
+                <a class="detail-link" href="#" data-detail="5">Ver detalle</a>
               </div>
             </div>
           </article>
@@ -1567,7 +1588,7 @@ h2,
               <p class="price">$40.000</p>
               <div class="product-actions">
                 <button class="btn btn-primary" type="button" data-add-cart="6">Agregá al carrito</button>
-                <a class="detail-link" href="#checkout" data-detail="6">Ver detalle</a>
+                <a class="detail-link" href="#" data-detail="6">Ver detalle</a>
               </div>
             </div>
           </article>        </div>
@@ -1579,8 +1600,8 @@ h2,
     <section class="page-hero" aria-labelledby="page-contacto-title">
       <div class="container">
         <p class="eyebrow">Atención personalizada</p>
-        <h1 class="page-title" id="page-contacto-title">Contacto y checkout</h1>
-        <p class="page-intro">Consultanos, revisá opiniones de clientes y finalizá tu compra simulada.</p>
+        <h1 class="page-title" id="page-contacto-title">Contacto y atención</h1>
+        <p class="page-intro">Consultanos y revisá opiniones de clientes que ya eligieron Pixel Zone.</p>
       </div>
     </section>
 <section class="section" id="opiniones" aria-labelledby="reviews-title">
@@ -1612,8 +1633,7 @@ h2,
       </div>
     </section>
 <section class="section contact-checkout" id="contacto" aria-labelledby="contact-title">
-      <div class="container two-column">
-        <div>
+      <div class="container contact-form-wrap">
           <div class="section-heading">
             <p class="eyebrow">Soporte y asesoramiento</p>
             <h2 id="contact-title">Contactanos</h2>
@@ -1637,10 +1657,35 @@ h2,
             <button class="btn btn-primary" type="submit">Enviar mensaje</button>
             <p class="form-feedback" id="contact-feedback" aria-live="polite"></p>
           </form>
-        </div>
+      </div>
+    </section>
+    </div>
+  </main>
 
-        <div id="checkout" class="checkout-panel" aria-labelledby="checkout-title">
-          <div class="section-heading">
+  <a class="whatsapp-float" href="https://wa.me/5492230000000" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+    <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+      <path d="M12.04 2a9.86 9.86 0 0 0-8.45 15.01L2.1 22l5.14-1.35A9.86 9.86 0 1 0 12.04 2Zm0 1.9a7.96 7.96 0 0 1 6.78 12.12 7.88 7.88 0 0 1-9.07 3.33l-.31-.1-3.05.8.82-2.96-.14-.32A7.96 7.96 0 0 1 12.04 3.9Zm-3.1 3.92c-.18 0-.47.07-.72.35-.25.28-.95.93-.95 2.26s.98 2.63 1.12 2.81c.14.19 1.92 2.93 4.65 4.1.65.28 1.16.45 1.55.57.65.2 1.25.17 1.72.1.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.12-.25-.19-.53-.33-.28-.14-1.6-.79-1.85-.88-.25-.1-.43-.14-.62.14-.18.28-.71.88-.87 1.06-.16.19-.32.21-.6.07-.28-.14-1.17-.43-2.24-1.37-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.49.14-.16.18-.28.28-.47.09-.19.05-.35-.02-.49-.07-.14-.62-1.49-.85-2.04-.22-.54-.45-.46-.62-.47h-.53Z"></path>
+    </svg>
+  </a>
+
+  <aside class="cart-drawer" id="cart-drawer" aria-hidden="true" aria-labelledby="cart-title">
+    <div class="cart-overlay" data-close-cart></div>
+    <div class="cart-panel" role="dialog" aria-modal="true">
+      <div class="cart-header">
+        <h2 id="cart-title">Carrito</h2>
+        <button class="icon-button" type="button" aria-label="Cerrar carrito" data-close-cart>×</button>
+      </div>
+      <div class="cart-view cart-view-items active" id="cart-view-items">
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-totals" id="cart-totals"></div>
+        <div class="cart-actions">
+          <button class="btn btn-secondary" type="button" data-close-cart>Seguir comprando</button>
+          <button class="btn btn-primary" type="button" id="checkout-button">Finalizar compra</button>
+        </div>
+      </div>
+      <div class="cart-view cart-view-checkout" id="cart-view-checkout">
+        <button class="btn btn-secondary cart-back-button" type="button" id="back-to-cart">Volver al carrito</button>
+        <div class="section-heading">
             <p class="eyebrow">Checkout simulado</p>
             <h2 id="checkout-title">Finalizá tu compra</h2>
           </div>
@@ -1685,30 +1730,6 @@ h2,
             <button class="btn btn-primary" type="submit">Confirmar compra</button>
             <p class="form-feedback" id="checkout-feedback" aria-live="polite"></p>
           </form>
-        </div>
-      </div>
-    </section>
-    </div>
-  </main>
-
-  <a class="whatsapp-float" href="https://wa.me/5492230000000" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
-    <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false">
-      <path d="M12.04 2a9.86 9.86 0 0 0-8.45 15.01L2.1 22l5.14-1.35A9.86 9.86 0 1 0 12.04 2Zm0 1.9a7.96 7.96 0 0 1 6.78 12.12 7.88 7.88 0 0 1-9.07 3.33l-.31-.1-3.05.8.82-2.96-.14-.32A7.96 7.96 0 0 1 12.04 3.9Zm-3.1 3.92c-.18 0-.47.07-.72.35-.25.28-.95.93-.95 2.26s.98 2.63 1.12 2.81c.14.19 1.92 2.93 4.65 4.1.65.28 1.16.45 1.55.57.65.2 1.25.17 1.72.1.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.12-.25-.19-.53-.33-.28-.14-1.6-.79-1.85-.88-.25-.1-.43-.14-.62.14-.18.28-.71.88-.87 1.06-.16.19-.32.21-.6.07-.28-.14-1.17-.43-2.24-1.37-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.49.14-.16.18-.28.28-.47.09-.19.05-.35-.02-.49-.07-.14-.62-1.49-.85-2.04-.22-.54-.45-.46-.62-.47h-.53Z"></path>
-    </svg>
-  </a>
-
-  <aside class="cart-drawer" id="cart-drawer" aria-hidden="true" aria-labelledby="cart-title">
-    <div class="cart-overlay" data-close-cart></div>
-    <div class="cart-panel" role="dialog" aria-modal="true">
-      <div class="cart-header">
-        <h2 id="cart-title">Carrito</h2>
-        <button class="icon-button" type="button" aria-label="Cerrar carrito" data-close-cart>×</button>
-      </div>
-      <div class="cart-items" id="cart-items"></div>
-      <div class="cart-totals" id="cart-totals"></div>
-      <div class="cart-actions">
-        <button class="btn btn-secondary" type="button" data-close-cart>Seguir comprando</button>
-        <button class="btn btn-primary" type="button" id="checkout-button">Finalizar compra</button>
       </div>
     </div>
   </aside>
@@ -1844,6 +1865,8 @@ const cartTotals = document.querySelector('#cart-totals');
 const cartCount = document.querySelector('.cart-count');
 const checkoutSummary = document.querySelector('#checkout-summary');
 const checkoutFeedback = document.querySelector('#checkout-feedback');
+const cartViewItems = document.querySelector('#cart-view-items');
+const cartViewCheckout = document.querySelector('#cart-view-checkout');
 let currentPage = 'inicio';
 
 function setActiveNav(pageName) {
@@ -1877,6 +1900,23 @@ function showPage(pageName, targetId = null) {
   }
 }
 
+function showCartItems() {
+  cartViewItems?.classList.add('active');
+  cartViewCheckout?.classList.remove('active');
+}
+
+function showCartCheckout() {
+  if (!cart.length) {
+    renderCart();
+    showCartItems();
+    return;
+  }
+
+  cartViewItems?.classList.remove('active');
+  cartViewCheckout?.classList.add('active');
+  renderCheckoutSummary();
+}
+
 function formatPrice(value) {
   return `$${value.toLocaleString('es-AR')}`;
 }
@@ -1895,7 +1935,7 @@ function createProductCard(product) {
       <p class="price">${formatPrice(product.price)}</p>
       <div class="product-actions">
         <button class="btn btn-primary" type="button" data-add-cart="${product.id}">Agregá al carrito</button>
-        <a class="detail-link" href="#checkout" data-detail="${product.id}">Ver detalle</a>
+        <a class="detail-link" href="#" data-detail="${product.id}">Ver detalle</a>
       </div>
     </div>
   `;
@@ -2024,6 +2064,7 @@ function addToCart(productId) {
   }
 
   renderCart();
+  showCartItems();
   openCart();
 }
 
@@ -2055,6 +2096,7 @@ function closeCart() {
   cartDrawer.classList.remove('open');
   cartDrawer.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('no-scroll');
+  showCartItems();
 }
 
 function isValidEmail(email) {
@@ -2190,6 +2232,7 @@ document.addEventListener('click', (event) => {
   const increaseButton = event.target.closest('[data-increase]');
   const decreaseButton = event.target.closest('[data-decrease]');
   const removeButton = event.target.closest('[data-remove]');
+  const backToCartButton = event.target.closest('#back-to-cart');
 
   if (navLink) {
     event.preventDefault();
@@ -2200,10 +2243,15 @@ document.addEventListener('click', (event) => {
   if (addButton) addToCart(Number(addButton.dataset.addCart));
   if (detailLink) {
     event.preventDefault();
-    showPage('contacto', '#checkout');
+    showCartItems();
+    openCart();
   }
-  if (cartOpenButton) openCart();
+  if (cartOpenButton) {
+    showCartItems();
+    openCart();
+  }
   if (closeButton) closeCart();
+  if (backToCartButton) showCartItems();
   if (increaseButton) changeQuantity(Number(increaseButton.dataset.increase), 1);
   if (decreaseButton) changeQuantity(Number(decreaseButton.dataset.decrease), -1);
   if (removeButton) removeFromCart(Number(removeButton.dataset.remove));
@@ -2233,11 +2281,11 @@ searchInput?.addEventListener('input', () => {
 document.querySelector('#checkout-button')?.addEventListener('click', () => {
   if (!cart.length) {
     renderCart();
+    showCartItems();
     return;
   }
 
-  closeCart();
-  showPage('contacto', '#checkout');
+  showCartCheckout();
 });
 
 document.querySelector('#contact-form')?.addEventListener('submit', (event) => {
@@ -2273,6 +2321,9 @@ document.querySelector('#checkout-form')?.addEventListener('submit', (event) => 
   cart = [];
   form.reset();
   renderCart();
+  setTimeout(() => {
+    showCartItems();
+  }, 1200);
 });
 
 setupNewsletter('#newsletter-form', '#newsletter-feedback');
@@ -2292,6 +2343,7 @@ showPage(initialPage);
   </script>
 </body>
 </html>
+
 
 
 
