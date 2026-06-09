@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -414,6 +414,39 @@ h2,
 
 .section {
   padding: 78px 0;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+.page-hero {
+  padding: 70px 0 30px;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(123, 44, 191, 0.18), transparent 34%),
+    linear-gradient(135deg, var(--bg-main), #10121c 58%, var(--bg-main));
+}
+
+.page-title {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: var(--h1-desktop);
+  line-height: 1.05;
+}
+
+.page-intro {
+  max-width: 680px;
+  color: #d8dbe3;
+  font-size: 18px;
+}
+
+.nav-links a.active,
+.footer-links a.active {
+  color: var(--cta);
 }
 
 .section-heading {
@@ -1138,6 +1171,18 @@ h2,
     padding: 54px 0;
   }
 
+  .page-hero {
+    padding: 48px 0 18px;
+  }
+
+  .page-title {
+    font-size: var(--h1-mobile);
+  }
+
+  .page-intro {
+    font-size: var(--body-mobile);
+  }
+
   .split-heading {
     align-items: start;
     flex-direction: column;
@@ -1246,7 +1291,7 @@ h2,
 <body>
   <header class="site-header">
     <nav class="nav container" aria-label="Navegación principal">
-      <a class="logo header-logo" href="#inicio" aria-label="Pixel Zone inicio">
+      <a class="logo header-logo" href="#inicio" aria-label="Pixel Zone inicio" data-nav-page="inicio">
         <img class="logo-symbol" src="assets/logo-pixel-zone-clean.png" alt="" aria-hidden="true">
         <span class="brand-name">Pixel Zone</span>
       </a>
@@ -1259,11 +1304,9 @@ h2,
 
       <div class="nav-panel" id="nav-menu">
         <ul class="nav-links">
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#tienda">Tienda</a></li>
-          <li><a href="#productos">Productos</a></li>
-          <li><a href="#opiniones">Opiniones</a></li>
-          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#inicio" data-nav-page="inicio">Inicio</a></li>
+          <li><a href="#tienda" data-nav-page="tienda">Tienda</a></li>
+          <li><a href="#contacto" data-nav-page="contacto">Contacto</a></li>
         </ul>
 
         <form class="search-form" role="search">
@@ -1281,16 +1324,17 @@ h2,
     </nav>
   </header>
 
-  <main>
-    <section class="hero" id="inicio">
+    <main>
+    <div class="page active" id="page-inicio" data-page="inicio">
+<section class="hero" id="inicio">
       <div class="container hero-grid">
         <div class="hero-content">
           <p class="eyebrow">Hardware gamer en Mar del Plata</p>
           <h1>Armá tu setup gamer ideal</h1>
           <p>Encontrá periféricos, gabinetes y accesorios gamer con diseño, rendimiento y estilo.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#tienda">Ver productos</a>
-            <a class="btn btn-secondary" href="#productos">Conocé ofertas</a>
+            <a class="btn btn-primary" href="#tienda" data-nav-page="tienda" data-nav-target="#tienda">Ver productos</a>
+            <a class="btn btn-secondary" href="#productos" data-nav-page="inicio" data-nav-target="#productos">Conocé ofertas</a>
           </div>
         </div>
         <div class="hero-media" aria-label="Setup gamer con periféricos RGB">
@@ -1299,25 +1343,7 @@ h2,
         </div>
       </div>
     </section>
-
-    <section class="section" aria-labelledby="categorias-title">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Elegí tu próxima mejora</p>
-          <h2 id="categorias-title">Comprá por categoría</h2>
-        </div>
-        <div class="category-grid" id="category-grid">
-          <button class="category-card active" type="button" data-category="Todos">Todos</button>
-          <button class="category-card" type="button" data-category="Periféricos">Periféricos</button>
-          <button class="category-card" type="button" data-category="Teclados">Teclados</button>
-          <button class="category-card" type="button" data-category="Mouse Gamer">Mouse Gamer</button>
-          <button class="category-card" type="button" data-category="Gabinetes">Gabinetes</button>
-          <button class="category-card" type="button" data-category="Accesorios">Accesorios</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="section featured" id="productos" aria-labelledby="featured-title">
+<section class="section featured" id="productos" aria-labelledby="featured-title">
       <div class="container">
         <div class="section-heading">
           <p class="eyebrow">Ofertas activas</p>
@@ -1371,8 +1397,81 @@ h2,
           </article>        </div>
       </div>
     </section>
+<section class="section carousel-section" aria-labelledby="carousel-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Novedades para competir</p>
+          <h2 id="carousel-title">Ofertas y novedades</h2>
+        </div>
+        <div class="carousel" aria-roledescription="carrusel">
+          <button class="carousel-control prev" type="button" aria-label="Slide anterior">‹</button>
+          <div class="slides" id="slides">
+            <article class="slide active">
+              <span>15% OFF</span>
+              <h3>Mouse gamer RGB con descuento</h3>
+              <p>Precisión, respuesta rápida y agarre cómodo para partidas largas.</p>
+            </article>
+            <article class="slide">
+              <span>NUEVO STOCK</span>
+              <h3>Teclados mecánicos para competir</h3>
+              <p>Switches firmes, iluminación RGB y construcción resistente.</p>
+            </article>
+            <article class="slide">
+              <span>SETUP PRO</span>
+              <h3>Gabinetes con flujo de aire optimizado</h3>
+              <p>Armá una PC con mejor ventilación, espacio y presencia gamer.</p>
+            </article>
+          </div>
+          <button class="carousel-control next" type="button" aria-label="Slide siguiente">›</button>
+          <div class="carousel-dots" id="carousel-dots" aria-label="Seleccionar slide"></div>
+        </div>
+      </div>
+    </section>
+<section class="section newsletter-band" aria-labelledby="newsletter-title">
+      <div class="container newsletter-grid">
+        <div>
+          <p class="eyebrow">Promos exclusivas</p>
+          <h2 id="newsletter-title">Recibí ofertas gamer antes que nadie</h2>
+          <p>Suscribite y enterate de descuentos, lanzamientos y promociones exclusivas para mejorar tu setup.</p>
+        </div>
+        <form class="newsletter-form" id="newsletter-form" novalidate>
+          <label for="newsletter-email">Email</label>
+          <div class="inline-form">
+            <input id="newsletter-email" name="email" type="email" placeholder="tuemail@ejemplo.com">
+            <button class="btn btn-primary" type="submit">Suscribite</button>
+          </div>
+          <p class="form-feedback" id="newsletter-feedback" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+    </div>
 
-    <section class="section" id="tienda" aria-labelledby="store-title">
+    <div class="page" id="page-tienda" data-page="tienda">
+    <section class="page-hero" aria-labelledby="page-tienda-title">
+      <div class="container">
+        <p class="eyebrow">Tienda Pixel Zone</p>
+        <h1 class="page-title" id="page-tienda-title">Productos gamer para tu setup</h1>
+        <p class="page-intro">Elegí periféricos, gabinetes y accesorios gamer con diseño, rendimiento y estilo.</p>
+      </div>
+    </section>
+<section class="section" aria-labelledby="categorias-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Elegí tu próxima mejora</p>
+          <h2 id="categorias-title">Comprá por categoría</h2>
+        </div>
+        <div class="category-grid" id="category-grid">
+          <button class="category-card active" type="button" data-category="Todos">Todos</button>
+          <button class="category-card" type="button" data-category="Periféricos">Periféricos</button>
+          <button class="category-card" type="button" data-category="Teclados">Teclados</button>
+          <button class="category-card" type="button" data-category="Mouse Gamer">Mouse Gamer</button>
+          <button class="category-card" type="button" data-category="Gabinetes">Gabinetes</button>
+          <button class="category-card" type="button" data-category="Accesorios">Accesorios</button>
+        </div>
+      </div>
+    </section>
+
+<section class="section" id="tienda" aria-labelledby="store-title">
       <div class="container">
         <div class="section-heading split-heading">
           <div>
@@ -1474,57 +1573,17 @@ h2,
           </article>        </div>
       </div>
     </section>
+    </div>
 
-    <section class="section carousel-section" aria-labelledby="carousel-title">
+    <div class="page" id="page-contacto" data-page="contacto">
+    <section class="page-hero" aria-labelledby="page-contacto-title">
       <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Novedades para competir</p>
-          <h2 id="carousel-title">Ofertas y novedades</h2>
-        </div>
-        <div class="carousel" aria-roledescription="carrusel">
-          <button class="carousel-control prev" type="button" aria-label="Slide anterior">‹</button>
-          <div class="slides" id="slides">
-            <article class="slide active">
-              <span>15% OFF</span>
-              <h3>Mouse gamer RGB con descuento</h3>
-              <p>Precisión, respuesta rápida y agarre cómodo para partidas largas.</p>
-            </article>
-            <article class="slide">
-              <span>NUEVO STOCK</span>
-              <h3>Teclados mecánicos para competir</h3>
-              <p>Switches firmes, iluminación RGB y construcción resistente.</p>
-            </article>
-            <article class="slide">
-              <span>SETUP PRO</span>
-              <h3>Gabinetes con flujo de aire optimizado</h3>
-              <p>Armá una PC con mejor ventilación, espacio y presencia gamer.</p>
-            </article>
-          </div>
-          <button class="carousel-control next" type="button" aria-label="Slide siguiente">›</button>
-          <div class="carousel-dots" id="carousel-dots" aria-label="Seleccionar slide"></div>
-        </div>
+        <p class="eyebrow">Atención personalizada</p>
+        <h1 class="page-title" id="page-contacto-title">Contacto y checkout</h1>
+        <p class="page-intro">Consultanos, revisá opiniones de clientes y finalizá tu compra simulada.</p>
       </div>
     </section>
-
-    <section class="section newsletter-band" aria-labelledby="newsletter-title">
-      <div class="container newsletter-grid">
-        <div>
-          <p class="eyebrow">Promos exclusivas</p>
-          <h2 id="newsletter-title">Recibí ofertas gamer antes que nadie</h2>
-          <p>Suscribite y enterate de descuentos, lanzamientos y promociones exclusivas para mejorar tu setup.</p>
-        </div>
-        <form class="newsletter-form" id="newsletter-form" novalidate>
-          <label for="newsletter-email">Email</label>
-          <div class="inline-form">
-            <input id="newsletter-email" name="email" type="email" placeholder="tuemail@ejemplo.com">
-            <button class="btn btn-primary" type="submit">Suscribite</button>
-          </div>
-          <p class="form-feedback" id="newsletter-feedback" aria-live="polite"></p>
-        </form>
-      </div>
-    </section>
-
-    <section class="section" id="opiniones" aria-labelledby="reviews-title">
+<section class="section" id="opiniones" aria-labelledby="reviews-title">
       <div class="container">
         <div class="section-heading">
           <p class="eyebrow">Clientes que ya compraron</p>
@@ -1552,8 +1611,7 @@ h2,
         </div>
       </div>
     </section>
-
-    <section class="section contact-checkout" id="contacto" aria-labelledby="contact-title">
+<section class="section contact-checkout" id="contacto" aria-labelledby="contact-title">
       <div class="container two-column">
         <div>
           <div class="section-heading">
@@ -1630,6 +1688,7 @@ h2,
         </div>
       </div>
     </section>
+    </div>
   </main>
 
   <a class="whatsapp-float" href="https://wa.me/5492230000000" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
@@ -1657,7 +1716,7 @@ h2,
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
-        <a class="logo footer-logo" href="#inicio">
+        <a class="logo footer-logo" href="#inicio" data-nav-page="inicio">
           <img class="footer-logo-symbol" src="assets/logo-pixel-zone-clean.png" alt="" aria-hidden="true">
           <span>Pixel Zone</span>
         </a>
@@ -1672,11 +1731,9 @@ h2,
       <div>
         <h3>Navegación</h3>
         <ul class="footer-links">
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#tienda">Tienda</a></li>
-          <li><a href="#productos">Productos</a></li>
-          <li><a href="#opiniones">Opiniones</a></li>
-          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#inicio" data-nav-page="inicio">Inicio</a></li>
+          <li><a href="#tienda" data-nav-page="tienda">Tienda</a></li>
+          <li><a href="#contacto" data-nav-page="contacto">Contacto</a></li>
         </ul>
       </div>
 
@@ -1787,6 +1844,38 @@ const cartTotals = document.querySelector('#cart-totals');
 const cartCount = document.querySelector('.cart-count');
 const checkoutSummary = document.querySelector('#checkout-summary');
 const checkoutFeedback = document.querySelector('#checkout-feedback');
+let currentPage = 'inicio';
+
+function setActiveNav(pageName) {
+  document.querySelectorAll('[data-nav-page]').forEach((link) => {
+    link.classList.toggle('active', link.dataset.navPage === pageName);
+  });
+}
+
+function showPage(pageName, targetId = null) {
+  const normalizedPage = ['inicio', 'tienda', 'contacto'].includes(pageName) ? pageName : 'inicio';
+  currentPage = normalizedPage;
+
+  document.querySelectorAll('.page').forEach((page) => {
+    page.classList.toggle('active', page.dataset.page === normalizedPage);
+  });
+
+  setActiveNav(normalizedPage);
+  document.querySelector('#nav-menu')?.classList.remove('open');
+  document.querySelector('.menu-toggle')?.setAttribute('aria-expanded', 'false');
+
+  if (window.location.hash !== `#${normalizedPage}`) {
+    history.replaceState(null, '', `#${normalizedPage}`);
+  }
+
+  if (targetId) {
+    setTimeout(() => {
+      document.querySelector(targetId)?.scrollIntoView({ behavior: 'smooth' });
+    }, 70);
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
 
 function formatPrice(value) {
   return `$${value.toLocaleString('es-AR')}`;
@@ -1822,6 +1911,7 @@ function attachImageFallbacks(scope = document) {
 }
 
 function renderProducts() {
+  if (!productGrid || !resultsMessage || !searchInput) return;
   const query = searchInput.value.trim().toLowerCase();
   const filteredProducts = products.filter((product) => {
     const matchesCategory = activeCategory === 'Todos' || product.category === activeCategory || product.tags.includes(activeCategory);
@@ -1836,6 +1926,7 @@ function renderProducts() {
 }
 
 function renderFeaturedProducts() {
+  if (!featuredGrid) return;
   featuredGrid.innerHTML = '';
   products.filter((product) => product.featured).forEach((product) => {
     featuredGrid.appendChild(createProductCard(product));
@@ -1855,10 +1946,11 @@ function getCartTotals() {
 
 function updateCartCount() {
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-  cartCount.textContent = totalItems;
+  if (cartCount) cartCount.textContent = totalItems;
 }
 
 function renderCheckoutSummary() {
+  if (!checkoutSummary) return;
   const totals = getCartTotals();
 
   if (!cart.length) {
@@ -1885,6 +1977,8 @@ function renderCheckoutSummary() {
 function renderCart() {
   updateCartCount();
   renderCheckoutSummary();
+
+  if (!cartItems || !cartTotals) return;
 
   if (!cart.length) {
     cartItems.innerHTML = '<p class="empty-cart">Tu carrito está vacío. Agregá productos para continuar.</p>';
@@ -1950,12 +2044,14 @@ function removeFromCart(productId) {
 }
 
 function openCart() {
+  if (!cartDrawer) return;
   cartDrawer.classList.add('open');
   cartDrawer.setAttribute('aria-hidden', 'false');
   document.body.classList.add('no-scroll');
 }
 
 function closeCart() {
+  if (!cartDrawer) return;
   cartDrawer.classList.remove('open');
   cartDrawer.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('no-scroll');
@@ -2085,7 +2181,9 @@ function setupCarousel() {
 }
 
 document.addEventListener('click', (event) => {
+  const navLink = event.target.closest('[data-nav-page]');
   const addButton = event.target.closest('[data-add-cart]');
+  const detailLink = event.target.closest('[data-detail]');
   const categoryButton = event.target.closest('[data-category]');
   const closeButton = event.target.closest('[data-close-cart]');
   const cartOpenButton = event.target.closest('.cart-button');
@@ -2093,7 +2191,17 @@ document.addEventListener('click', (event) => {
   const decreaseButton = event.target.closest('[data-decrease]');
   const removeButton = event.target.closest('[data-remove]');
 
+  if (navLink) {
+    event.preventDefault();
+    showPage(navLink.dataset.navPage, navLink.dataset.navTarget || null);
+    return;
+  }
+
   if (addButton) addToCart(Number(addButton.dataset.addCart));
+  if (detailLink) {
+    event.preventDefault();
+    showPage('contacto', '#checkout');
+  }
   if (cartOpenButton) openCart();
   if (closeButton) closeCart();
   if (increaseButton) changeQuantity(Number(increaseButton.dataset.increase), 1);
@@ -2105,7 +2213,7 @@ document.addEventListener('click', (event) => {
     document.querySelectorAll('[data-category]').forEach((button) => button.classList.remove('active'));
     categoryButton.classList.add('active');
     renderProducts();
-    document.querySelector('#tienda').scrollIntoView({ behavior: 'smooth' });
+    showPage('tienda', '#tienda');
   }
 });
 
@@ -2115,14 +2223,12 @@ document.querySelector('.menu-toggle')?.addEventListener('click', (event) => {
   event.currentTarget.setAttribute('aria-expanded', String(isOpen));
 });
 
-document.querySelectorAll('.nav-links a').forEach((link) => {
-  link.addEventListener('click', () => {
-    document.querySelector('#nav-menu').classList.remove('open');
-    document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false');
-  });
+searchInput?.addEventListener('input', () => {
+  if (currentPage !== 'tienda') {
+    showPage('tienda', '#tienda');
+  }
+  renderProducts();
 });
-
-searchInput?.addEventListener('input', renderProducts);
 
 document.querySelector('#checkout-button')?.addEventListener('click', () => {
   if (!cart.length) {
@@ -2131,7 +2237,7 @@ document.querySelector('#checkout-button')?.addEventListener('click', () => {
   }
 
   closeCart();
-  document.querySelector('#checkout').scrollIntoView({ behavior: 'smooth' });
+  showPage('contacto', '#checkout');
 });
 
 document.querySelector('#contact-form')?.addEventListener('submit', (event) => {
@@ -2177,10 +2283,16 @@ renderProducts();
 renderCart();
 attachImageFallbacks();
 
+const initialHash = window.location.hash.replace('#', '');
+const initialPage = ['inicio', 'tienda', 'contacto'].includes(initialHash) ? initialHash : 'inicio';
+showPage(initialPage);
+
 
 });
   </script>
 </body>
 </html>
+
+
 
 
