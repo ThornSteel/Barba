@@ -588,67 +588,120 @@ h2,
   font-weight: 700;
 }
 
-.carousel {
+.carousel-showcase {
   position: relative;
-  display: grid;
-  grid-template-columns: 48px 1fr 48px;
-  align-items: center;
-  gap: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(123, 44, 191, 0.35);
+  border-radius: 8px;
+  background: var(--bg-secondary);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34), 0 0 36px rgba(123, 44, 191, 0.16);
+}
+
+.carousel-copy {
+  position: absolute;
+  top: 34px;
+  left: 64px;
+  z-index: 3;
+}
+
+.carousel-copy h2 {
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.65);
 }
 
 .slides {
-  min-height: 240px;
+  position: relative;
+  min-height: 500px;
   overflow: hidden;
-  border-radius: 8px;
 }
 
 .slide {
+  position: relative;
   display: none;
-  min-height: 240px;
-  padding: 42px;
-  background:
-    linear-gradient(135deg, rgba(123, 44, 191, 0.34), rgba(0, 245, 212, 0.09)),
-    var(--bg-secondary);
-  border: 1px solid rgba(123, 44, 191, 0.42);
+  min-height: 500px;
+  padding: 124px 64px 64px;
+  background-image:
+    linear-gradient(135deg, rgba(123, 44, 191, 0.36), rgba(0, 245, 212, 0.08)),
+    var(--slide-bg);
+  background-color: var(--bg-secondary);
+  background-size: cover;
+  background-position: center;
+}
+
+.slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(13, 14, 21, 0.94), rgba(13, 14, 21, 0.48), rgba(13, 14, 21, 0.14));
 }
 
 .slide.active {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
 }
 
-.slide span {
+.slide-content {
+  position: relative;
+  z-index: 1;
+  max-width: 540px;
+}
+
+.slide-content span {
   color: var(--cta);
   font-weight: 800;
 }
 
-.slide h3 {
+.slide-content h3 {
   margin: 8px 0;
   font-family: var(--font-title);
-  font-size: 30px;
-  line-height: 1.1;
-}
-
-.slide p {
-  max-width: 620px;
-  margin: 0;
-  color: #d8dbe3;
-}
-
-.carousel-control {
-  width: 48px;
-  height: 48px;
-  color: var(--text-main);
-  background: var(--bg-secondary);
-  border: 1px solid rgba(123, 44, 191, 0.7);
-  border-radius: 8px;
-  font-size: 34px;
+  font-size: clamp(34px, 4vw, 58px);
   line-height: 1;
 }
 
+.slide-content p {
+  max-width: 520px;
+  margin: 0 0 18px;
+  color: #d8dbe3;
+}
+
+.slide-content strong {
+  display: block;
+  color: var(--cta);
+  font-family: var(--font-title);
+  font-size: clamp(34px, 4vw, 58px);
+  font-weight: 800;
+  line-height: 1;
+  text-shadow: 0 0 24px rgba(0, 245, 212, 0.28);
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+  width: 52px;
+  height: 52px;
+  color: var(--text-main);
+  background: rgba(26, 28, 41, 0.82);
+  border: 1px solid rgba(123, 44, 191, 0.7);
+  border-radius: 8px;
+  font-size: 36px;
+  line-height: 1;
+  transform: translateY(-50%);
+}
+
+.carousel-control.prev {
+  left: 18px;
+}
+
+.carousel-control.next {
+  right: 18px;
+}
+
 .carousel-dots {
-  grid-column: 1 / -1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 24px;
+  z-index: 4;
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -824,34 +877,6 @@ h2,
   opacity: 1;
 }
 
-.whatsapp-float {
-  position: fixed;
-  right: 22px;
-  bottom: 22px;
-  z-index: 80;
-  width: 58px;
-  height: 58px;
-  display: grid;
-  place-items: center;
-  background: var(--cta);
-  color: #061211;
-  border: 2px solid rgba(244, 245, 247, 0.18);
-  border-radius: 999px;
-  box-shadow: 0 0 24px rgba(0, 245, 212, 0.35);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.whatsapp-float:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 30px rgba(0, 245, 212, 0.48);
-}
-
-.whatsapp-float svg {
-  width: 31px;
-  height: 31px;
-  fill: currentColor;
-}
-
 .cart-overlay {
   position: absolute;
   inset: 0;
@@ -1022,6 +1047,110 @@ h2,
 .footer-newsletter {
   display: grid;
   gap: 10px;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.social-links a {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  color: var(--cta);
+  border-radius: 999px;
+  transition: transform 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.social-links a:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(0, 245, 212, 0.28);
+}
+
+.social-links svg {
+  width: 34px;
+  height: 34px;
+  fill: currentColor;
+}
+
+.promo-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  display: none;
+}
+
+.promo-modal.open {
+  display: block;
+}
+
+.promo-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.promo-panel {
+  position: relative;
+  z-index: 1;
+  width: min(860px, calc(100% - 28px));
+  max-height: 88vh;
+  margin: 6vh auto;
+  padding: 42px;
+  overflow-y: auto;
+  background: #777;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 8px;
+}
+
+.promo-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 44px;
+  height: 44px;
+  color: #fff;
+  font-size: 30px;
+}
+
+.promo-panel h2 {
+  margin: 0 0 28px;
+  font-family: var(--font-body);
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.promo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 42px;
+}
+
+.promo-form input {
+  background: transparent;
+  border: 1px solid #111;
+  border-radius: 0;
+  color: #fff;
+}
+
+.promo-submit {
+  min-width: 220px;
+  min-height: 82px;
+  display: block;
+  margin: 36px auto 0;
+  background: #1e1e1e;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 0;
+  font-size: 34px;
+  cursor: pointer;
 }
 
 .map-wrap {
@@ -1236,41 +1365,39 @@ h2,
     font-size: var(--button-mobile);
   }
 
-  .carousel {
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
+  .carousel-copy {
+    top: 24px;
+    left: 24px;
+    right: 24px;
   }
 
-  .slides {
-    grid-column: 1 / -1;
-    order: 1;
+  .slides,
+  .slide {
+    min-height: 420px;
+  }
+
+  .slide {
+    padding: 130px 24px 72px;
+    background-position: center;
+  }
+
+  .slide-content h3,
+  .slide-content strong {
+    font-size: 34px;
   }
 
   .carousel-control {
     width: 44px;
     height: 44px;
-    order: 2;
+    font-size: 30px;
   }
 
   .carousel-control.prev {
-    justify-self: end;
+    left: 10px;
   }
 
   .carousel-control.next {
-    justify-self: start;
-  }
-
-  .carousel-dots {
-    order: 3;
-  }
-
-  .slide {
-    min-height: 280px;
-    padding: 24px;
-  }
-
-  .slide h3 {
-    font-size: 24px;
+    right: 10px;
   }
 
   .newsletter-grid,
@@ -1294,16 +1421,23 @@ h2,
     display: grid;
   }
 
-  .whatsapp-float {
-    right: 14px;
-    bottom: 14px;
-    width: 52px;
-    height: 52px;
+  .promo-panel {
+    padding: 24px;
   }
 
-  .whatsapp-float svg {
-    width: 28px;
-    height: 28px;
+  .promo-panel h2 {
+    font-size: 26px;
+  }
+
+  .promo-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .promo-submit {
+    width: 100%;
+    min-height: 60px;
+    font-size: 24px;
   }
 }
 
@@ -1420,27 +1554,36 @@ h2,
     </section>
 <section class="section carousel-section" aria-labelledby="carousel-title">
       <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Novedades para competir</p>
-          <h2 id="carousel-title">Ofertas y novedades</h2>
-        </div>
-        <div class="carousel" aria-roledescription="carrusel">
+        <div class="carousel-showcase" aria-roledescription="carrusel">
+          <div class="carousel-copy">
+            <p class="eyebrow">Novedades para competir</p>
+            <h2 id="carousel-title">Ofertas y novedades</h2>
+          </div>
           <button class="carousel-control prev" type="button" aria-label="Slide anterior">‹</button>
           <div class="slides" id="slides">
-            <article class="slide active">
-              <span>15% OFF</span>
-              <h3>Mouse gamer RGB con descuento</h3>
-              <p>Precisión, respuesta rápida y agarre cómodo para partidas largas.</p>
+            <article class="slide active" style="--slide-bg: url('assets/carrusel1.png')">
+              <div class="slide-content">
+                <span>15% OFF</span>
+                <h3>Mouse RGB con descuento</h3>
+                <p>Precisión, respuesta rápida y agarre cómodo para partidas largas.</p>
+                <strong>¡15% OFF!</strong>
+              </div>
             </article>
-            <article class="slide">
-              <span>NUEVO STOCK</span>
-              <h3>Teclados mecánicos para competir</h3>
-              <p>Switches firmes, iluminación RGB y construcción resistente.</p>
+            <article class="slide" style="--slide-bg: url('assets/carrusel2.png')">
+              <div class="slide-content">
+                <span>NUEVO STOCK</span>
+                <h3>Teclado Mecánico Custom</h3>
+                <p>Llevá tu setup al siguiente nivel. Stock limitado.</p>
+                <strong>¡10% OFF + 3 cuotas sin interés!</strong>
+              </div>
             </article>
-            <article class="slide">
-              <span>SETUP PRO</span>
-              <h3>Gabinetes con flujo de aire optimizado</h3>
-              <p>Armá una PC con mejor ventilación, espacio y presencia gamer.</p>
+            <article class="slide" style="--slide-bg: url('assets/carrusel3.png')">
+              <div class="slide-content">
+                <span>SETUP PRO</span>
+                <h3>Auriculares Gamer 7.1 RGB</h3>
+                <p>Sentí cada paso. Audio inmersivo para tus partidas.</p>
+                <strong>¡20% OFF!</strong>
+              </div>
             </article>
           </div>
           <button class="carousel-control next" type="button" aria-label="Slide siguiente">›</button>
@@ -1662,12 +1805,6 @@ h2,
     </div>
   </main>
 
-  <a class="whatsapp-float" href="https://wa.me/5492230000000" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
-    <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false">
-      <path d="M12.04 2a9.86 9.86 0 0 0-8.45 15.01L2.1 22l5.14-1.35A9.86 9.86 0 1 0 12.04 2Zm0 1.9a7.96 7.96 0 0 1 6.78 12.12 7.88 7.88 0 0 1-9.07 3.33l-.31-.1-3.05.8.82-2.96-.14-.32A7.96 7.96 0 0 1 12.04 3.9Zm-3.1 3.92c-.18 0-.47.07-.72.35-.25.28-.95.93-.95 2.26s.98 2.63 1.12 2.81c.14.19 1.92 2.93 4.65 4.1.65.28 1.16.45 1.55.57.65.2 1.25.17 1.72.1.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.12-.25-.19-.53-.33-.28-.14-1.6-.79-1.85-.88-.25-.1-.43-.14-.62.14-.18.28-.71.88-.87 1.06-.16.19-.32.21-.6.07-.28-.14-1.17-.43-2.24-1.37-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.49.14-.16.18-.28.28-.47.09-.19.05-.35-.02-.49-.07-.14-.62-1.49-.85-2.04-.22-.54-.45-.46-.62-.47h-.53Z"></path>
-    </svg>
-  </a>
-
   <aside class="cart-drawer" id="cart-drawer" aria-hidden="true" aria-labelledby="cart-title">
     <div class="cart-overlay" data-close-cart></div>
     <div class="cart-panel" role="dialog" aria-modal="true">
@@ -1734,6 +1871,45 @@ h2,
     </div>
   </aside>
 
+  <div class="promo-modal" id="promo-modal" aria-hidden="true">
+    <div class="promo-modal-overlay" data-close-promo></div>
+    <div class="promo-panel" role="dialog" aria-modal="true" aria-labelledby="promo-title">
+      <button class="icon-button promo-close" type="button" data-close-promo aria-label="Cerrar formulario">×</button>
+      <h2 id="promo-title">Conocé nuestras ofertas y promociones</h2>
+      <form class="promo-form" id="promo-form" novalidate>
+        <div class="promo-grid">
+          <div class="form-group">
+            <label for="promo-lastname">Apellido</label>
+            <input id="promo-lastname" name="lastname" type="text">
+            <small class="error-message"></small>
+          </div>
+          <div class="form-group">
+            <label for="promo-name">Nombre</label>
+            <input id="promo-name" name="name" type="text">
+            <small class="error-message"></small>
+          </div>
+          <div class="form-group">
+            <label for="promo-phone">Teléfono</label>
+            <input id="promo-phone" name="phone" type="tel">
+            <small class="error-message"></small>
+          </div>
+          <div class="form-group">
+            <label for="promo-email">Email</label>
+            <input id="promo-email" name="email" type="email">
+            <small class="error-message"></small>
+          </div>
+          <div class="form-group">
+            <label for="promo-birthdate">Fecha de nacimiento</label>
+            <input id="promo-birthdate" name="birthdate" type="text" placeholder="dd/mm/aa">
+            <small class="error-message"></small>
+          </div>
+        </div>
+        <button class="promo-submit" type="submit">Enviar</button>
+        <p class="form-feedback" id="promo-feedback" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
@@ -1764,10 +1940,18 @@ h2,
           <li><a href="https://example.com/nosotros" target="_blank" rel="noopener noreferrer">Nosotros</a></li>
           <li><a href="https://example.com/privacidad" target="_blank" rel="noopener noreferrer">Política de privacidad</a></li>
           <li><a href="https://example.com/terminos" target="_blank" rel="noopener noreferrer">Términos y condiciones</a></li>
-          <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-          <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-          <li><a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">TikTok</a></li>
         </ul>
+        <div class="social-links" aria-label="Redes sociales">
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14 8.7V6.8c0-.9.2-1.4 1.5-1.4H17V2.2C16.3 2.1 15.5 2 14.4 2c-2.8 0-4.7 1.7-4.7 4.8v1.9H6.6V12h3.1v10h4.1V12h3.1l.5-3.3H14Z"/></svg>
+          </a>
+          <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M16.7 2c.4 3 2.1 4.8 5 5v3.4c-1.8.1-3.4-.5-4.9-1.5v6.4c0 4.1-2.5 6.7-6.3 6.7-3.6 0-6.2-2.4-6.2-5.8 0-3.7 2.9-6.3 6.9-5.9v3.6c-1.8-.3-3 .5-3 2.1 0 1.4 1 2.3 2.4 2.3 1.5 0 2.4-.9 2.4-2.8V2h3.7Z"/></svg>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 3A2.5 2.5 0 0 0 5 7.5v9A2.5 2.5 0 0 0 7.5 19h9a2.5 2.5 0 0 0 2.5-2.5v-9A2.5 2.5 0 0 0 16.5 5h-9Zm4.5 2.8a4.2 4.2 0 1 1 0 8.4 4.2 4.2 0 0 1 0-8.4Zm0 2.8a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8Zm4.8-3.5a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/></svg>
+          </a>
+        </div>
       </div>
 
       <div>
@@ -1867,6 +2051,9 @@ const checkoutSummary = document.querySelector('#checkout-summary');
 const checkoutFeedback = document.querySelector('#checkout-feedback');
 const cartViewItems = document.querySelector('#cart-view-items');
 const cartViewCheckout = document.querySelector('#cart-view-checkout');
+const promoModal = document.querySelector('#promo-modal');
+const promoForm = document.querySelector('#promo-form');
+const promoFeedback = document.querySelector('#promo-feedback');
 let currentPage = 'inicio';
 
 function setActiveNav(pageName) {
@@ -2146,6 +2333,41 @@ function validateContactForm(form) {
   return valid;
 }
 
+function openPromoModal(prefilledEmail = '') {
+  promoModal?.classList.add('open');
+  promoModal?.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('no-scroll');
+  const promoEmail = document.querySelector('#promo-email');
+  if (promoEmail && prefilledEmail) promoEmail.value = prefilledEmail;
+}
+
+function closePromoModal() {
+  promoModal?.classList.remove('open');
+  promoModal?.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('no-scroll');
+}
+
+function validatePromoForm(form) {
+  clearFormErrors(form);
+  let valid = true;
+  const requiredFields = ['lastname', 'name', 'phone', 'email', 'birthdate'];
+
+  requiredFields.forEach((fieldName) => {
+    const field = form.elements[fieldName];
+    if (!field.value.trim()) {
+      setFieldError(field, 'Este campo es obligatorio.');
+      valid = false;
+    }
+  });
+
+  if (form.elements.email.value.trim() && !isValidEmail(form.elements.email.value.trim())) {
+    setFieldError(form.elements.email, 'Ingresá un email válido.');
+    valid = false;
+  }
+
+  return valid;
+}
+
 function validateCheckoutForm(form) {
   clearFormErrors(form);
   let valid = true;
@@ -2182,12 +2404,13 @@ function setupNewsletter(formId, feedbackId) {
     event.preventDefault();
     const email = form.elements.email.value.trim();
 
-    if (!isValidEmail(email)) {
+    if (email && !isValidEmail(email)) {
       setFeedback(feedback, 'Ingresá un email válido.', 'error');
       return;
     }
 
-    setFeedback(feedback, 'Te suscribiste correctamente.', 'success');
+    setFeedback(feedback, '', 'success');
+    openPromoModal(email);
     form.reset();
   });
 }
@@ -2220,6 +2443,7 @@ function setupCarousel() {
 
   document.querySelector('.prev')?.addEventListener('click', () => showSlide(activeSlide - 1));
   document.querySelector('.next')?.addEventListener('click', () => showSlide(activeSlide + 1));
+  setInterval(() => showSlide(activeSlide + 1), 5000);
 }
 
 document.addEventListener('click', (event) => {
@@ -2233,6 +2457,7 @@ document.addEventListener('click', (event) => {
   const decreaseButton = event.target.closest('[data-decrease]');
   const removeButton = event.target.closest('[data-remove]');
   const backToCartButton = event.target.closest('#back-to-cart');
+  const closePromoButton = event.target.closest('[data-close-promo]');
 
   if (navLink) {
     event.preventDefault();
@@ -2251,6 +2476,7 @@ document.addEventListener('click', (event) => {
     openCart();
   }
   if (closeButton) closeCart();
+  if (closePromoButton) closePromoModal();
   if (backToCartButton) showCartItems();
   if (increaseButton) changeQuantity(Number(increaseButton.dataset.increase), 1);
   if (decreaseButton) changeQuantity(Number(decreaseButton.dataset.decrease), -1);
@@ -2298,8 +2524,33 @@ document.querySelector('#contact-form')?.addEventListener('submit', (event) => {
     return;
   }
 
-  setFeedback(feedback, 'Mensaje enviado correctamente. Te responderemos a la brevedad.', 'success');
+  const name = form.elements.name.value.trim();
+  const email = form.elements.email.value.trim();
+  const message = form.elements.message.value.trim();
+  const whatsappNumber = '5492235133288';
+  const text = `Hola, soy ${name}. Mi email es ${email}. Quiero consultar sobre Pixel Zone. Mensaje: ${message}`;
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+
+  window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  setFeedback(feedback, 'Te redirigimos a WhatsApp para continuar la consulta.', 'success');
   form.reset();
+});
+
+promoForm?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const form = event.currentTarget;
+
+  if (!validatePromoForm(form)) {
+    setFeedback(promoFeedback, '', 'error');
+    return;
+  }
+
+  setFeedback(promoFeedback, 'Gracias por registrarte. Te enviaremos promociones gamer a tu email.', 'success');
+  form.reset();
+  setTimeout(() => {
+    closePromoModal();
+    setFeedback(promoFeedback, '', 'success');
+  }, 1500);
 });
 
 document.querySelector('#checkout-form')?.addEventListener('submit', (event) => {
@@ -2343,8 +2594,3 @@ showPage(initialPage);
   </script>
 </body>
 </html>
-
-
-
-
-
