@@ -588,11 +588,25 @@ h2,
   font-weight: 700;
 }
 
+.full-carousel-section {
+  padding: 80px 0;
+  background: var(--bg-main);
+}
+
+.full-carousel-section .carousel-showcase {
+  width: 100vw;
+  max-width: none;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
 .carousel-showcase {
   position: relative;
+  min-height: 520px;
   overflow: hidden;
-  border: 1px solid rgba(123, 44, 191, 0.35);
-  border-radius: 8px;
+  border-top: 1px solid rgba(123, 44, 191, 0.35);
+  border-bottom: 1px solid rgba(123, 44, 191, 0.35);
+  border-radius: 0;
   background: var(--bg-secondary);
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34), 0 0 36px rgba(123, 44, 191, 0.16);
 }
@@ -600,38 +614,63 @@ h2,
 .carousel-copy {
   position: absolute;
   top: 34px;
-  left: 64px;
-  z-index: 3;
+  left: clamp(24px, 7vw, 140px);
+  z-index: 4;
+}
+
+.carousel-copy .eyebrow {
+  margin: 0 0 6px;
+  color: var(--cta);
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .carousel-copy h2 {
+  margin: 0;
+  max-width: 260px;
+  font-family: var(--font-title);
+  font-size: clamp(30px, 3vw, 46px);
+  line-height: 0.95;
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.65);
 }
 
 .slides {
   position: relative;
-  min-height: 500px;
+  min-height: 520px;
   overflow: hidden;
 }
 
 .slide {
   position: relative;
   display: none;
-  min-height: 500px;
-  padding: 124px 64px 64px;
-  background-image:
-    linear-gradient(135deg, rgba(123, 44, 191, 0.36), rgba(0, 245, 212, 0.08)),
-    var(--slide-bg);
+  min-height: 520px;
+  padding: 52px clamp(24px, 12vw, 240px);
   background-color: var(--bg-secondary);
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+}
+
+.slide-1 {
+  background-image: url("assets/carrusel1.png");
+}
+
+.slide-2 {
+  background-image: url("assets/carrusel2.png");
+}
+
+.slide-3 {
+  background-image: url("assets/carrusel3.png");
 }
 
 .slide::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(13, 14, 21, 0.94), rgba(13, 14, 21, 0.48), rgba(13, 14, 21, 0.14));
+  z-index: 0;
+  background:
+    linear-gradient(90deg, rgba(13, 14, 21, 0.92) 0%, rgba(13, 14, 21, 0.62) 35%, rgba(13, 14, 21, 0.15) 70%),
+    linear-gradient(180deg, rgba(13, 14, 21, 0.25), rgba(13, 14, 21, 0.45));
 }
 
 .slide.active {
@@ -641,77 +680,78 @@ h2,
 
 .slide-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: 540px;
-}
-
-.slide-content span {
-  color: var(--cta);
-  font-weight: 800;
+  margin-left: clamp(90px, 11vw, 220px);
+  margin-top: 60px;
 }
 
 .slide-content h3 {
-  margin: 8px 0;
+  max-width: 520px;
+  margin: 0 0 18px;
   font-family: var(--font-title);
-  font-size: clamp(34px, 4vw, 58px);
-  line-height: 1;
+  font-size: clamp(34px, 4vw, 60px);
+  line-height: 0.92;
 }
 
 .slide-content p {
   max-width: 520px;
-  margin: 0 0 18px;
-  color: #d8dbe3;
+  margin: 0 0 34px;
+  color: #F4F5F7;
+  font-size: clamp(17px, 1.4vw, 22px);
+  line-height: 1.35;
 }
 
 .slide-content strong {
   display: block;
   color: var(--cta);
   font-family: var(--font-title);
-  font-size: clamp(34px, 4vw, 58px);
+  font-size: clamp(42px, 4.8vw, 72px);
   font-weight: 800;
-  line-height: 1;
-  text-shadow: 0 0 24px rgba(0, 245, 212, 0.28);
+  line-height: 0.9;
+  text-shadow: 0 0 18px rgba(0, 245, 212, 0.25);
 }
 
 .carousel-control {
   position: absolute;
   top: 50%;
-  z-index: 4;
-  width: 52px;
-  height: 52px;
+  z-index: 5;
+  width: 72px;
+  height: 56px;
+  display: grid;
+  place-items: center;
   color: var(--text-main);
-  background: rgba(26, 28, 41, 0.82);
-  border: 1px solid rgba(123, 44, 191, 0.7);
+  background: rgba(26, 28, 41, 0.85);
+  border: 1px solid rgba(123, 44, 191, 0.9);
   border-radius: 8px;
-  font-size: 36px;
+  font-size: 42px;
   line-height: 1;
   transform: translateY(-50%);
 }
 
 .carousel-control.prev {
-  left: 18px;
+  left: clamp(12px, 2vw, 36px);
 }
 
 .carousel-control.next {
-  right: 18px;
+  right: clamp(12px, 2vw, 36px);
 }
 
 .carousel-dots {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 24px;
-  z-index: 4;
+  left: 50%;
+  bottom: 28px;
+  z-index: 6;
   display: flex;
-  justify-content: center;
   gap: 10px;
+  transform: translateX(-50%);
 }
 
 .dot {
-  width: 12px;
-  height: 12px;
+  width: 13px;
+  height: 13px;
   padding: 0;
-  background: #6d7280;
+  background: #7b7f8c;
   border: 0;
   border-radius: 999px;
 }
@@ -1365,39 +1405,67 @@ h2,
     font-size: var(--button-mobile);
   }
 
-  .carousel-copy {
-    top: 24px;
-    left: 24px;
-    right: 24px;
+  .full-carousel-section {
+    padding: 54px 0;
   }
 
+  .carousel-showcase,
   .slides,
   .slide {
-    min-height: 420px;
+    min-height: 560px;
   }
 
-  .slide {
-    padding: 130px 24px 72px;
-    background-position: center;
+  .carousel-copy {
+    top: 24px;
+    left: 20px;
+    right: 20px;
   }
 
-  .slide-content h3,
-  .slide-content strong {
+  .carousel-copy h2 {
+    max-width: 240px;
     font-size: 34px;
   }
 
+  .slide {
+    padding: 120px 20px 70px;
+    background-position: center;
+  }
+
+  .slide::before {
+    background:
+      linear-gradient(180deg, rgba(13, 14, 21, 0.95) 0%, rgba(13, 14, 21, 0.72) 42%, rgba(13, 14, 21, 0.35) 100%);
+  }
+
+  .slide-content {
+    max-width: 100%;
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  .slide-content h3 {
+    font-size: 36px;
+  }
+
+  .slide-content p {
+    font-size: 17px;
+  }
+
+  .slide-content strong {
+    font-size: 42px;
+  }
+
   .carousel-control {
-    width: 44px;
-    height: 44px;
-    font-size: 30px;
+    width: 54px;
+    height: 48px;
+    font-size: 34px;
   }
 
   .carousel-control.prev {
-    left: 10px;
+    left: 8px;
   }
 
   .carousel-control.next {
-    right: 10px;
+    right: 8px;
   }
 
   .newsletter-grid,
@@ -1552,43 +1620,38 @@ h2,
           </article>        </div>
       </div>
     </section>
-<section class="section carousel-section" aria-labelledby="carousel-title">
-      <div class="container">
-        <div class="carousel-showcase" aria-roledescription="carrusel">
-          <div class="carousel-copy">
-            <p class="eyebrow">Novedades para competir</p>
-            <h2 id="carousel-title">Ofertas y novedades</h2>
-          </div>
-          <button class="carousel-control prev" type="button" aria-label="Slide anterior">‹</button>
-          <div class="slides" id="slides">
-            <article class="slide active" style="--slide-bg: url('assets/carrusel1.png')">
-              <div class="slide-content">
-                <span>15% OFF</span>
-                <h3>Mouse RGB con descuento</h3>
-                <p>Precisión, respuesta rápida y agarre cómodo para partidas largas.</p>
-                <strong>¡15% OFF!</strong>
-              </div>
-            </article>
-            <article class="slide" style="--slide-bg: url('assets/carrusel2.png')">
-              <div class="slide-content">
-                <span>NUEVO STOCK</span>
-                <h3>Teclado Mecánico Custom</h3>
-                <p>Llevá tu setup al siguiente nivel. Stock limitado.</p>
-                <strong>¡10% OFF + 3 cuotas sin interés!</strong>
-              </div>
-            </article>
-            <article class="slide" style="--slide-bg: url('assets/carrusel3.png')">
-              <div class="slide-content">
-                <span>SETUP PRO</span>
-                <h3>Auriculares Gamer 7.1 RGB</h3>
-                <p>Sentí cada paso. Audio inmersivo para tus partidas.</p>
-                <strong>¡20% OFF!</strong>
-              </div>
-            </article>
-          </div>
-          <button class="carousel-control next" type="button" aria-label="Slide siguiente">›</button>
-          <div class="carousel-dots" id="carousel-dots" aria-label="Seleccionar slide"></div>
+    <section class="section carousel-section full-carousel-section" aria-labelledby="carousel-title">
+      <div class="carousel-showcase" aria-roledescription="carrusel">
+        <div class="carousel-copy">
+          <p class="eyebrow">NOVEDADES PARA COMPETIR</p>
+          <h2 id="carousel-title">Ofertas y novedades</h2>
         </div>
+        <button class="carousel-control prev" type="button" aria-label="Slide anterior">‹</button>
+        <div class="slides" id="slides">
+          <article class="slide active slide-1">
+            <div class="slide-content">
+              <h3>Mouse RGB con descuento</h3>
+              <p>Precisión, respuesta rápida y agarre cómodo para partidas largas.</p>
+              <strong>¡15% OFF!</strong>
+            </div>
+          </article>
+          <article class="slide slide-2">
+            <div class="slide-content">
+              <h3>Teclado Mecánico Custom</h3>
+              <p>Llevá tu setup al siguiente nivel. Stock limitado.</p>
+              <strong>¡10% OFF + 3 Cuotas sin interés!</strong>
+            </div>
+          </article>
+          <article class="slide slide-3">
+            <div class="slide-content">
+              <h3>Auriculares Gamer 7.1 RGB</h3>
+              <p>¡Sentí cada paso! Audio inmersivo para tus partidas.</p>
+              <strong>¡20% OFF!</strong>
+            </div>
+          </article>
+        </div>
+        <button class="carousel-control next" type="button" aria-label="Slide siguiente">›</button>
+        <div class="carousel-dots" id="carousel-dots" aria-label="Seleccionar slide"></div>
       </div>
     </section>
 <section class="section newsletter-band" aria-labelledby="newsletter-title">
@@ -2432,6 +2495,7 @@ function showSlide(index) {
 function setupCarousel() {
   const dotsContainer = document.querySelector('#carousel-dots');
   if (!dotsContainer) return;
+  dotsContainer.innerHTML = '';
   document.querySelectorAll('.slide').forEach((_, index) => {
     const dot = document.createElement('button');
     dot.className = `dot ${index === 0 ? 'active' : ''}`;
